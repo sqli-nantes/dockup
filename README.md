@@ -1,5 +1,5 @@
 # dockup
-Do you want an international packaging and integration system ? Dock UP !
+Do you want an universal packaging and integration system ? Dock UP !
 
 ## Description
 **dockup** is a tool built on [Docker](https://www.docker.com/) which allows to embed your application in an everywhere runnable package
