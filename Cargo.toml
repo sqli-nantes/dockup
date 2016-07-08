@@ -1,0 +1,7 @@
+[package]
+name = "dockup"
+version = "0.0.1"
+authors = [ "Guillaume Renaudin <@RGuillome>"]
+
+[dependencies]
+yaml-rust = "0.3.3"
