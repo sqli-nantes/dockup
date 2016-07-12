@@ -1,0 +1,1 @@
+{"runners":{"configs":{"project:/Rust-Cargo-Run":{"ram":1000,"variables":{},"options":{}}},"default":"project:/Rust-Cargo-Run"},"builders":{"configs":{}},"mixinTypes":["contribution"],"type":"blank","attributes":{}}
