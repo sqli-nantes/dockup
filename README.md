@@ -20,8 +20,6 @@ dockup
 * the executing machine
 
 ### Work in progress
-* Create the loader module to isolate the configuration loading process
-* Add a logger
 * Add main arguments with command pattern
 * Create the packager module to run the packaging command
 

@@ -5,3 +5,4 @@ authors = [ "Guillaume Renaudin <@RGuillome>"]
 
 [dependencies]
 yaml-rust = "0.3.3"
+log = "0.3.6"
