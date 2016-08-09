@@ -33,7 +33,7 @@ fn read_file(filename: &str) -> String {
     match file.read_to_string(&mut s) {
         Err(why) => panic!("couldn't read {}: {}", display,
                                                    why.description()),
-        Ok(_) => println!("{} contains:\n{}", display, s),
+        Ok(_) =>  info!("{} contains:\n{}", display, s),
     }
 
     s
