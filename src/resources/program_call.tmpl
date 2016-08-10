@@ -1,3 +1,21 @@
+use std::process::Command;
+
 fn main() {
-    {{ command }}
+
+
+		let command_str = String::from("{{ command }}");
+        let command_chunks:Vec<&str> = command_str.split(' ').collect();
+
+        let command_name_args = command_chunks.split_first();
+
+        let child = Command::new(command_name_args.unwrap().0)
+                               .args(&command_name_args.unwrap().1)
+                                                  .spawn()
+                            .expect("failed to execute process");
+
+
+        let ecode = child.wait_with_output()
+                 .expect("failed to wait on child");
+
+        println!("status: {}", ecode.status);
 }
