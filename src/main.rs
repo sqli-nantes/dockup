@@ -19,7 +19,8 @@ fn main() {
 
     info!("Loaded configuration : \n {}, {}", programdef, "test");
 
+    info!("Generate content file");
 
     //Example of writing file
-    generate::write_file("writtenfile.txt",programdef.to_string());
+    generate::generate_program_source_file(&programdef.name,&programdef.cmd);
 }

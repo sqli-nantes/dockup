@@ -3,6 +3,9 @@ name = "dockup"
 version = "0.0.1"
 authors = [ "Guillaume Renaudin <@RGuillome>"]
 
+include = ["src/resources/program_call.tmpl"]
+
 [dependencies]
 yaml-rust = "0.3.3"
 log = "0.3.6"
+rustache = "^0.0"
