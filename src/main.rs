@@ -1,11 +1,12 @@
 #[macro_use]
 extern crate log;
-use dockup::logger;
 
-extern crate dockup;
-use dockup::config::load;
-use dockup::config::model::ProgramDefinition;
-use dockup::program::generate;
+extern crate dockup_utils;
+use dockup_utils::config::load as load;
+use dockup_utils::config::model::ProgramDefinition  as ProgramDefinition;
+use dockup_utils::program::generate as generate;
+use dockup_utils::logger;
+
 
 use std::error::Error;
 

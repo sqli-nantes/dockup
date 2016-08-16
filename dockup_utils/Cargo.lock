@@ -1,9 +1,10 @@
 [root]
-name = "dockup"
-version = "0.0.1"
+name = "dockup_utils"
+version = "0.1.0"
 dependencies = [
- "dockup_utils 0.1.0",
  "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustache 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "yaml-rust 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -12,15 +13,6 @@ version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "memchr 0.1.11 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "dockup_utils"
-version = "0.1.0"
-dependencies = [
- "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
- "rustache 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "yaml-rust 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
