@@ -3,9 +3,9 @@ name = "dockup_utils"
 version = "0.1.0"
 authors = [ "Guillaume Renaudin <@RGuillome>"]
 
-include = ["src/resources/program_call.tmpl"]
+workspace = "../dockup"
 
 [dependencies]
-yaml-rust = "0.3.3"
-log = "0.3.5"
+yaml-rust = "^0.3.3"
+log = "^0.3.6"
 rustache = "^0.0"

@@ -1,8 +1,8 @@
 [package]
 name = "dockup"
-version = "0.0.1"
+version = "0.1.0"
 authors = [ "Guillaume Renaudin <@RGuillome>"]
 
 [dependencies]
-dockup_utils = { path = "dockup_utils", version = "" }
-log = "0.3.6"
+dockup_utils = { path = "dockup_utils", version = "0.1.0" }
+log = "^0.3.6"

@@ -1,6 +1,6 @@
 [root]
 name = "dockup"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "dockup_utils 0.1.0",
  "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",

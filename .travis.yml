@@ -1,4 +1,9 @@
 language: rust
+script:
+ - |
+    cargo build --verbose
+    cargo test -p dockup_utils
+    cargo test --verbose
 rust:
   - stable
   - beta
