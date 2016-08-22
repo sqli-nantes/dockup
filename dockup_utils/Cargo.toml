@@ -2,10 +2,20 @@
 name = "dockup_utils"
 version = "0.1.0"
 authors = [ "Guillaume Renaudin <@RGuillome>"]
+license = "MIT/Apache-2.0"
+build = "build.rs"
+#workspace = "../dockup"
 
-workspace = "../dockup"
+[features]
+default = ["serde_codegen"]
+unstable = ["serde_macros"]
+
+[build-dependencies]
+serde_codegen = { version = "^0.7", optional = true }
 
 [dependencies]
-yaml-rust = "^0.3.3"
 log = "^0.3.6"
 rustache = "^0.0"
+serde = "^0.7"
+serde_macros = { version = "^0.7", optional = true }
+serde_yaml = "^0.2"

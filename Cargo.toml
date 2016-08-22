@@ -2,6 +2,7 @@
 name = "dockup"
 version = "0.1.0"
 authors = [ "Guillaume Renaudin <@RGuillome>"]
+license = "MIT/Apache-2.0"
 
 [dependencies]
 dockup_utils = { path = "dockup_utils", version = "0.1.0" }

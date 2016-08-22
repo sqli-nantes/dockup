@@ -1,0 +1,1 @@
+{"rustc":18290872875420261930,"target":2044201800492160869,"profile":11154289914177168617,"local":{"variant":"Precalculated","fields":["0.0.3"]},"features":"None","deps":[["memstream v0.0.1",4947910054789613927],["regex v0.1.73",8320377981592062497],["rustc-serialize v0.3.19",11847758708283542447]],"rustflags":[]}
