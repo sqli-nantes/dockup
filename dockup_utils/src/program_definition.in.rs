@@ -21,4 +21,8 @@ impl ProgramDefinition {
     pub fn from_yaml(s: &String) -> ProgramDefinition {
         serde_yaml::from_str(&s).unwrap()
     }
-}
+
+    pub fn to_yaml(p: &ProgramDefinition) -> String{
+        serde_yaml::to_string(p).unwrap()
+    }
+ }

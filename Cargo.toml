@@ -7,3 +7,4 @@ license = "MIT/Apache-2.0"
 [dependencies]
 dockup_utils = { path = "dockup_utils", version = "0.1.0" }
 log = "^0.3.6"
+clap = {version = "2", features = ["yaml"]}

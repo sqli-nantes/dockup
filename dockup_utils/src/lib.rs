@@ -11,5 +11,6 @@ include!(concat!(env!("OUT_DIR"), "/program_definition.rs"));
 extern crate log;
 
 pub mod config;
+mod files;
 pub mod logger;
 pub mod program;
