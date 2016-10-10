@@ -14,6 +14,15 @@ subcommands:
                 long: config
                 value_name: PATH
                 takes_value: true
+    - run:
+        help: run the dockuped application from the config provided
+        args:
+            - config:
+                help: Sets the path to the dockup yaml application file to use
+                short: c
+                long: config
+                value_name: PATH
+                takes_value: true
     - info:
         help: give informations about a dockuped application
         args:

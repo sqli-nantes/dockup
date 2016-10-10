@@ -4,6 +4,7 @@ use std::env;
 use super::super::config as config;
 use super::super::files as files;
 use super::super::ProgramDefinition  as ProgramDefinition;
+use super::super::system as system;
 
 pub const DOCKUP_CONFIG_PATH: &'static str = ".dockup";
 
@@ -41,6 +42,22 @@ fn create_application_config_dir(programdef: &ProgramDefinition, dockup_config_d
     String::from(dir_to_create)
 }
 
+fn create_executable(filename: &str, config_path : &str, dockup_dir_path : &str) -> String {
+
+    let executable_content = super::generate_executable_content(config_path);
+    debug!("Executable content to be written : {}", executable_content);
+
+    let mut executable_path = String::from(dockup_dir_path);
+    executable_path.push_str(filename);
+
+    files::write_file(executable_path.as_str(), executable_content.as_str());
+
+    executable_path
+
+}
+
+
+
 pub fn execute(config_path: &str) {
     // First, create the dockup config dir
     let dockup_config_dir = create_dockup_config_dir();
@@ -51,11 +68,16 @@ pub fn execute(config_path: &str) {
 
     // Then, copy the application config yaml to the config dir
     let application_config_dir = create_application_config_dir(&programdef, &dockup_config_dir);
-    config::save_config_struct(&application_config_dir, &programdef);
+    let config_path_str = config::save_config_struct(&application_config_dir, &programdef);
 
     // Finally, create an alias for the execution of the command
+    let executable_path = create_executable(programdef.name.as_str(), &config_path_str, &application_config_dir);
 
+    //Make the command executable
+    system::make_executable(&executable_path);
 
-    //TODO add to PATH?
+    //create a sym link into the system
+    system::create_symlink_binary(&executable_path, programdef.name.as_str());
+
 
 }

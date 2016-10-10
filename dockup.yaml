@@ -1,6 +1,0 @@
----
-"command": "docker run --rm rguillom/reveal"
-"name": "unit-application-test"
-"os": 
-  - "linux"
-  - "windows"

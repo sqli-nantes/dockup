@@ -24,10 +24,17 @@ fn main() {
     let yaml = load_yaml!("resources/dockup_cli.yaml");
     let matches = App::from_yaml(yaml).setting(AppSettings::SubcommandRequired).get_matches();
 
+
     if let Some(matches) = matches.subcommand_matches("install") {
 
         let config_path = matches.value_of("config").unwrap_or(config::DOCKUP_CONFIG_FILENAME);
 
         program::install::execute(config_path);
+
+    } else if let Some(matches) = matches.subcommand_matches("run") {
+
+        let config_path = matches.value_of("config").unwrap_or(config::DOCKUP_CONFIG_FILENAME);
+
+        program::run::execute(config_path);
     }
 }

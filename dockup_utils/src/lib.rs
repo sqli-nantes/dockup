@@ -10,6 +10,7 @@ include!(concat!(env!("OUT_DIR"), "/program_definition.rs"));
 #[macro_use]
 extern crate log;
 
+mod system;
 pub mod config;
 mod files;
 pub mod logger;

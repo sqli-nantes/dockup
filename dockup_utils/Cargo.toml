@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = [ "Guillaume Renaudin <@RGuillome>"]
 license = "MIT/Apache-2.0"
 build = "build.rs"
+include = ["src/resources/executable_dockuped.tmpl"]
 #workspace = "../dockup"
 
 [features]
