@@ -34,7 +34,7 @@ fn generate_executable_content(config_path: &str) -> String  {
 
     match rv.unwrap().read_to_end(&mut buffer) {
         Err(why) => {
-            panic!("couldn't read {} file because {}", DOCKUP_SOURCE_TEMPLATE_FILEPATH,
+            panic!("couldn't read {} file because {}", "../resources/exe_dockup.tmpl",
                                                why.description())
         },
         Ok(_) => String::from_utf8(buffer).unwrap()
