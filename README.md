@@ -14,7 +14,7 @@ The choosen programming language is [Rust](https://www.rust-lang.org/) simply be
 ## Why
 This tool allows to wrap a complex command into a simple alias
 
-## How it works
+## How to dockup your project or application launch ?
 1. _First_, __Create__ a YAML configuration file at the root of your project
 Example `mydockup.yaml` :
 ```yaml
@@ -32,6 +32,13 @@ This will add the config file inside a $HOME_DIR/.dockup/mycommand/dockup.yaml a
 $ myapplication
 ```
 it will launch the command configured behind the name `myapplication`, in the example, the `docker run`command
+
+## Install dockup
+1. Download the [last release](https://github.com/sqli-nantes/dockup/releases) of dockup
+2. Copy the dockup binary to /usr/bin
+```bash
+sudo cp dockup /usr/bin
+```
 
 ## Want more ?
 - If you need to test a configuration file without installing it (i.e. copying the config file into the local `.dockup` directory and creating the binary symbolic link into `/usr/bin` just call :
