@@ -15,7 +15,7 @@ fn configuration_loaded(){
 
 #[test]
 fn save_configuration(){
-    let filepath = String::from("target/");
+    let filepath = String::from("/tmp");
     let program_definition = ProgramDefinition {
         name: String::from("myapp"),
         command: String::from("execute --with args"),
