@@ -1,12 +1,20 @@
 language: rust
 script:
- - cargo build --verbose
- - cargo test -p dockup_utils
- - cargo test --verbose
+- cargo build --verbose
+- cargo test -p dockup_utils
+- cargo test --verbose
 rust:
-  - stable
-  - beta
-  - nightly
+- stable
+- beta
+- nightly
 matrix:
   allow_failures:
-    - rust: nightly
+  - rust: nightly
+before_deploy: cargo build --release
+deploy:
+  provider: releases
+  api_key:
+    secure: HR7WCe5ChuYrgUyh1DyP1xnkn2sFcekyRKPg7KZecNTd3KeMXhzxUn16C+zq/Qc9T/1+xdODE93627Gn0K/BWGtxROViIqzK2HCyBP2cYL9v7wPJ9HeXjzJUO+K2PBekGHp3+V1YWRGkN2ANC+PfkEDt6MBzKeg9mXLQuhwweX6i8x/6njVOskyVtd09HMtMDQl3T/MIlODkIXQs09KUNofIAqjfw0FuTwMPWtLy0hyLpF6I0tLNnuGmA2gTkTVUvFKRqyh0bAbc4TxWShzUCh2N3h7SxColj0uQKevMo4Wt69o6yD/95dICRjdqLYndakCwcgLKi7+aIUnlztpfvcQVxr14gD3nYbXMb1maqfcRyS9InzSx6Pw1QLq0IJL4eI4dbwOiLxCq2wYNH0bCUg90kh9Q8Tf5kAnN3LQekakQMhUWYRdBnxHpEPbGeXQTPEVD+X7bmHpGf/TYT4W66OnIsTsUvb65leh9VyaInlwE20twwZDSLxDJBgaZyZiluCMtewSkku4SIc2zbCuXIO9adE1bvpcZZYke/PeManhxpKpXEId0tZMJ7EE0x4SSRJJYr/gxll5wiwhPfKmwjgjNZVdVGWuOxHjVaV1ssQ7RJf+9N0eKSI2P7UI4izK+YZcL1S2ksxnTQW8qY0bg4MVuaC59JSYu76MTBfhC95o=
+  file: dockup
+  on:
+    repo: sqli-nantes/dockup
