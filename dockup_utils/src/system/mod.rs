@@ -6,7 +6,7 @@ pub const MOD_X_FORALL: &'static str = "755";
 pub const SUDO_BIN: &'static str = "sudo";
 pub const LN_BIN: &'static str = "ln";
 pub const SYM_ARG: &'static str = "-s";
-pub const PATH_USR_BIN: &'static str = "/usr/bin";
+pub const PATH_USR_BIN: &'static str = "/usr/local/bin";
 
 pub fn make_executable(file_path: &str) {
 
