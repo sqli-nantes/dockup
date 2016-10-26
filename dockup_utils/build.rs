@@ -6,9 +6,8 @@ fn main() {
     use std::path::Path;
 
     let out_dir = env::var_os("OUT_DIR").unwrap();
-
-    let src = Path::new("src/program_definition.in.rs");
-    let dst = Path::new(&out_dir).join("program_definition.rs");
+    let src = Path::new("src/config/config_type.in.rs");
+    let dst = Path::new(&out_dir).join("config_type.rs");
 
     serde_codegen::expand(&src, &dst).unwrap();
 }

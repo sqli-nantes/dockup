@@ -1,11 +1,10 @@
 [package]
 name = "dockup_utils"
 version = "0.1.0"
-authors = [ "Guillaume Renaudin <@RGuillome>"]
+authors = ["Guillaume Renaudin <@RGuillome>"]
 license = "MIT/Apache-2.0"
 build = "build.rs"
-include = ["src/resources/executable_dockuped.tmpl"]
-#workspace = "../dockup"
+include = ["src/resources/exec_dockup.tmpl"]
 
 [features]
 default = ["serde_codegen"]

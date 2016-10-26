@@ -1,26 +1,26 @@
 extern crate dockup_utils;
 
 use dockup_utils::config as config;
-use dockup_utils::ProgramDefinition;
+use dockup_utils::ApplicationDockupConfig;
 
 #[test]
 fn configuration_loaded(){
 
     let filename = String::from("tests/resources/dockup-config.yaml");
-    let program_definition = config::load_config_struct(&filename);
 
-    assert_eq!(program_definition.command,"docker run --rm rguillom/reveal");
-    assert_eq!(program_definition.name,"unit-application-test");
+    let configfile_content = files::read_file(filename);
+
+    let applicationConfig = ApplicationDockupConfig::new(&configfile_content);
+
+    assert_eq!(applicationConfig.command,"docker run --rm rguillom/reveal");
+    assert_eq!(applicationConfig.name,"unit-application-test");
 }
 
 #[test]
 fn save_configuration(){
     let filepath = String::from("/tmp");
-    let program_definition = ProgramDefinition {
-        name: String::from("myapp"),
-        command: String::from("execute --with args"),
-    };
+    let applicationConfig = ApplicationDockupConfig::new("name: myapp \\ncommand: execute --with args");
 
-
-    config::save_config_struct(&filepath, &program_definition);
+    let saved_filename = applicationConfig.save();
+    assert_eq!(applicationConfig.command,"execute --with args");
 }

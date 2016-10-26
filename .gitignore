@@ -1,4 +1,8 @@
 /.idea
 /**/*.iml
 /**/target
+<<<<<<< HEAD
 /.codenvy
+=======
+/.codenvy
+>>>>>>> Complete refactoring with Structure organisation
