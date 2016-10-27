@@ -64,7 +64,7 @@ impl ProgramConfig {
     }
 
     pub fn create_config_dir(&self, dockup_dir : &str) -> String {
-        let file_path = Path::new(dockup_dir).join(&self.command);
+        let file_path = Path::new(dockup_dir).join(&self.name);
 
         file::create_dir(file_path.to_str().unwrap());
 

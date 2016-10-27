@@ -43,7 +43,7 @@ impl ExecutableCliCommand for Install {
         let config_path = program_config.save(&program_config_dir);
 
         // Finally, create an alias for the execution of the command
-        system::WrappedDockupRun::new(&program_config_dir, &program_config.command, &config_path).as_callable_cli();
+        system::WrappedDockupRun::new(&program_config_dir, &program_config.name, &config_path).as_callable_cli();
 
     }
 }
@@ -71,7 +71,7 @@ fn main() {
     }
 
     // The YAML file is found relative to the current file, similar to how modules are found
-    let yaml = load_yaml!("resources/dockup_cli.yml");
+    let yaml = load_yaml!("resources/dockup_cli.yaml");
     let matches = App::from_yaml(yaml).setting(AppSettings::SubcommandRequired).get_matches();
 
 
