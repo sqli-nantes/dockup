@@ -1,12 +1,31 @@
+sudo: required
 language: rust
+
+services:
+  - docker
+
+before install:
+  - docker pull rguillome/rust
+  - docker run -d --name exec-rust -v $(pwd):/source rguillome/rust
+  - docker ps -a
+
+before-script:
+  - docker run -it --name exec-rust
+
 script:
-- cargo build --verbose
-- cargo test -p dockup_utils
-- cargo test --verbose
+  - cargo build --verbose
+  - target/debug/dockup install tests/resources/dockup.yaml
+  - cargo test -p dockup_utils
+  - cargo test --verbose
+
+after-script:
+  - exit
+  - docker rm -f --name exec-rust
+
 rust:
-- stable
-- beta
-- nightly
+  - stable
+  - beta
+  - nightly
 matrix:
   allow_failures:
   - rust: nightly

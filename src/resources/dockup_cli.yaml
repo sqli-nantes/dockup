@@ -9,24 +9,26 @@ subcommands:
         help: install the dockuped application and create an alias to launch it
         args:
             - config:
-                help: Sets the path to the dockup yaml application file to use
+                help: Sets the path to the dockup yaml application file to use (can be a github path)
                 short: c
                 long: config
                 value_name: PATH
+                required: true
                 takes_value: true
     - run:
-        help: run the dockuped application from the config provided
+        help: run the dockuped application with the config provided
         args:
             - config:
                 help: Sets the path to the dockup yaml application file to use
                 short: c
                 long: config
                 value_name: PATH
+                required: true  
                 takes_value: true
     - info:
         help: give informations about a dockuped application
         args:
-            - APP:
+            - app:
                 help: Sets the name of  the dockuped application
                 required: true
                 index: 1

@@ -7,15 +7,13 @@ build = "build.rs"
 include = ["src/resources/exec_dockup.tmpl"]
 
 [features]
-default = ["serde_codegen"]
-unstable = ["serde_macros"]
-
-[build-dependencies]
-serde_codegen = { version = "^0.7", optional = true }
 
 [dependencies]
 log = "^0.3.6"
-rustache = "^0.0"
-serde = "^0.7"
-serde_macros = { version = "^0.7", optional = true }
-serde_yaml = "^0.2"
+rustache = "0.1.0"
+serde = "0.8"
+serde_derive = "0.8"
+serde_json = "0.8"
+serde_yaml = "0.4.1"
+curl = "0.4.4"
+rustc-serialize = "0.3"

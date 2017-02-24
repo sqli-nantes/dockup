@@ -1,7 +1,8 @@
 extern crate dockup_utils;
 
-use dockup_utils::config as config;
+use dockup_utils::config;
 use dockup_utils::config::ProgramConfig;
+use dockup_utils::docker;
 
 #[test]
 fn configuration_loaded_and_saved() {
@@ -20,4 +21,9 @@ fn configuration_loaded_and_saved() {
     expected.push_str(config::DOCKUP_CONFIG_FILENAME);
     assert_eq!(saved_filename, expected);
 
+}
+
+#[test]
+fn docker_install_script() {
+    docker::ensure_docker_locally_available();
 }

@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate log;
+extern crate env_logger;
 
 #[macro_use]
 extern crate clap;
@@ -7,12 +8,11 @@ use clap::App;
 use clap::AppSettings;
 
 extern crate dockup_utils;
-use dockup_utils::config as config;
-use dockup_utils::logger as logger;
-use dockup_utils::system as system;
-use dockup_utils::config::ProgramConfig as ProgramConfig;
+use dockup_utils::config;
+use dockup_utils::system;
+use dockup_utils::config::ProgramConfig;
+use dockup_utils::docker;
 
-use std::error::Error;
 
 
 /// Each Dockup command will have an execute from a config path method
@@ -24,18 +24,19 @@ trait ExecutableCliCommand {
 pub struct Install;
 
 impl ExecutableCliCommand for Install {
-
     fn execute(app_config_path: &str) {
+        // First of all, ensure docker is present
+        docker::ensure_docker_locally_available();
+
         // First, create the dockup config object
         let dockup_config = config::DockupConfig::new();
 
-
         // Next, load the config file and create a directory inside the dockup config dir to store the application config yaml
         let program_config = ProgramConfig::new(app_config_path);
-        info! ("Loaded configuration : \n {}", program_config);
+        info!("Loaded configuration : \n {}", program_config);
 
 
-        //create a directory to store all the specific
+        // create a directory to store all the specific
         let program_config_dir = program_config.create_config_dir(&dockup_config.dockup_dir);
 
 
@@ -43,7 +44,8 @@ impl ExecutableCliCommand for Install {
         let config_path = program_config.save(&program_config_dir);
 
         // Finally, create an alias for the execution of the command
-        system::WrappedDockupRun::new(&program_config_dir, &program_config.name, &config_path).as_callable_cli();
+        system::WrappedDockupRun::new(&program_config_dir, &program_config.name, &config_path)
+            .as_callable_cli();
 
     }
 }
@@ -52,7 +54,6 @@ impl ExecutableCliCommand for Install {
 pub struct Run;
 
 impl ExecutableCliCommand for Run {
-
     fn execute(config_path: &str) {
 
         // Next, load the config file and create a directory inside the dockup config dir to store the application config yaml
@@ -64,27 +65,21 @@ impl ExecutableCliCommand for Run {
 }
 
 fn main() {
-    //Init the logger
-    match logger::init() {
-        Err(why) => panic!("couldn't init logger: {}, caused by {:?}",  why.description(), why.cause()),
-        Ok(_) => println!("logger initialised"),
-    }
+    // Init the logger
+    env_logger::init().unwrap();
 
     // The YAML file is found relative to the current file, similar to how modules are found
     let yaml = load_yaml!("resources/dockup_cli.yaml");
     let matches = App::from_yaml(yaml).setting(AppSettings::SubcommandRequired).get_matches();
 
-
     if let Some(matches) = matches.subcommand_matches("install") {
 
         let config_path = matches.value_of("config").unwrap_or(config::DOCKUP_CONFIG_FILENAME);
-
         Install::execute(config_path);
 
     } else if let Some(matches) = matches.subcommand_matches("run") {
 
         let config_path = matches.value_of("config").unwrap_or(config::DOCKUP_CONFIG_FILENAME);
-
         Run::execute(config_path);
 
     }
