@@ -4,12 +4,12 @@ language: rust
 services:
   - docker
 
-before install:
+before_install:
   - docker pull rguillome/rust
   - docker run -d --name exec-rust -v $(pwd):/source rguillome/rust
   - docker ps -a
 
-before-script:
+before_script:
   - docker run -it --name exec-rust
 
 script:
@@ -18,7 +18,7 @@ script:
   - cargo test -p dockup_utils
   - cargo test --verbose
 
-after-script:
+after_script:
   - exit
   - docker rm -f --name exec-rust
 
