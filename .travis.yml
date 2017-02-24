@@ -5,8 +5,8 @@ services:
   - docker
 
 before_install:
-  - docker pull rguillome/rust
-  - docker run -d --name exec-rust -v $(pwd):/source rguillome/rust
+  - docker pull rguillom/rust
+  - docker run -d --name exec-rust -v $(pwd):/source rguillom/rust
   - docker ps -a
 
 before_script:
