@@ -8,7 +8,7 @@ before_install:
   - docker pull rguillom/rust
 
 before_script:
-  - docker run -d -it --rm --name exec-rust -v $(pwd):/source rguillom/rust
+  - docker run -d -it --name exec-rust -v $(pwd):/source rguillom/rust
 
 script:
   - cargo build --verbose
@@ -19,7 +19,7 @@ script:
 
 
 after_script:
-  - docker stop -t 0 exec-rust
+  - docker rm -f exec-rust
 
 rust:
   - stable
