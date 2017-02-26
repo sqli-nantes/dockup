@@ -6,21 +6,20 @@ services:
 
 before_install:
   - docker pull rguillom/rust
-  - docker run -d --name exec-rust -v $(pwd):/source rguillom/rust
-  - docker ps -a
 
 before_script:
-  - docker run -it --name exec-rust
+  - docker run -d -it --rm --name exec-rust -v $(pwd):/source rguillom/rust
 
 script:
   - cargo build --verbose
-  - target/debug/dockup install tests/resources/dockup.yaml
   - cargo test -p dockup_utils
-  - cargo test --verbose
+  - cargo test
+  #This is an integration test with docker installation first : TODO =>test if docker si correctly installed
+  - docker exec -t exec-rust "target/debug/dockup" "install" "--config" "tests/resources/dockup.yaml"
+
 
 after_script:
-  - exit
-  - docker rm -f --name exec-rust
+  - docker stop -t 0 exec-rust
 
 rust:
   - stable
